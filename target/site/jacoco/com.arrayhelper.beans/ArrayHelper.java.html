@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ArrayHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JUnit4Explore</a> &gt; <a href="index.source.html" class="el_package">com.arrayhelper.beans</a> &gt; <span class="el_source">ArrayHelper.java</span></div><h1>ArrayHelper.java</h1><pre class="source lang-java linenums">package com.arrayhelper.beans;
+
+import com.arrayhelper.exception.EmptyArrayException;
+
+<span class="fc" id="L5">public class ArrayHelper {</span>
+
+	public int[] filterDuplicates(int[] inArray) {
+<span class="fc" id="L8">		int[] outArray = null;</span>
+<span class="fc" id="L9">		int[] tmpArray = null;</span>
+<span class="fc" id="L10">		boolean found = false;</span>
+<span class="fc" id="L11">		int length = 0;</span>
+
+		try {
+<span class="fc" id="L14">			tmpArray = new int[inArray.length];</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">			for (int i = 0; i &lt; inArray.length; i++) {</span>
+<span class="fc" id="L16">				found = false;</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">				if (i == 0) {</span>
+<span class="fc" id="L18">					tmpArray[i] = inArray[i];</span>
+<span class="fc" id="L19">					length++;</span>
+<span class="fc" id="L20">					continue;</span>
+				}
+<span class="fc bfc" id="L22" title="All 2 branches covered.">				for (int j = 0; j &lt; length; j++) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">					if (tmpArray[j] == inArray[i])</span>
+<span class="fc" id="L24">						found = true;</span>
+				}
+<span class="fc bfc" id="L26" title="All 2 branches covered.">				if (found == false) {</span>
+<span class="fc" id="L27">					tmpArray[length] = inArray[i];</span>
+<span class="fc" id="L28">					length++;</span>
+				}
+			}
+<span class="fc" id="L31">			outArray = new int[length];</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">			for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L33">				outArray[i] = tmpArray[i];</span>
+			}
+
+<span class="fc" id="L36">		} catch (NullPointerException e) {</span>
+<span class="fc" id="L37">			throw new EmptyArrayException(&quot;Empty Array&quot;);</span>
+<span class="fc" id="L38">		}</span>
+
+<span class="fc" id="L40">		return outArray;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

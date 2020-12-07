@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JUnit4Explore</a> &gt; <a href="index.source.html" class="el_package">com.fileprocessor.beans</a> &gt; <span class="el_source">FileProcessor.java</span></div><h1>FileProcessor.java</h1><pre class="source lang-java linenums">package com.fileprocessor.beans;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.fileprocessor.exception.FileReaderException;
+
+public class FileProcessor {
+
+	private File inFile;
+
+<span class="fc" id="L14">	public FileProcessor(File inFile) {</span>
+<span class="fc" id="L15">		this.inFile = inFile;</span>
+<span class="fc" id="L16">	}</span>
+
+	public long chars() {
+<span class="fc" id="L19">		long chars = 0;</span>
+<span class="fc" id="L20">		char[] buffer = null;</span>
+<span class="fc" id="L21">		StringBuilder builder = null;</span>
+
+<span class="fc" id="L23">		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));) {</span>
+<span class="fc" id="L24">			buffer = new char[256];</span>
+<span class="fc" id="L25">			builder = new StringBuilder();</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">			while (bufferedReader.read(buffer) != -1) {</span>
+<span class="fc" id="L27">				builder.append(buffer);</span>
+			}
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">			if (builder.length() &gt; 0) {</span>
+<span class="fc" id="L30">				chars = builder.toString().trim().length();</span>
+			}
+<span class="nc" id="L32">		} catch (IOException e) {</span>
+<span class="nc" id="L33">			throw new FileReaderException(&quot;Unable To Read File&quot;, e);</span>
+<span class="fc" id="L34">		}</span>
+
+<span class="fc" id="L36">		return chars;</span>
+	}
+
+	public long words() {
+<span class="fc" id="L40">		long words = 0;</span>
+<span class="fc" id="L41">		char[] buffer = null;</span>
+<span class="fc" id="L42">		StringBuilder builder = null;</span>
+
+<span class="fc" id="L44">		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));) {</span>
+<span class="fc" id="L45">			buffer = new char[256];</span>
+<span class="fc" id="L46">			builder = new StringBuilder();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">			while (bufferedReader.read(buffer) != -1) {</span>
+<span class="fc" id="L48">				builder.append(buffer);</span>
+			}
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">			if (builder.length() &gt; 0) {</span>
+<span class="fc" id="L51">				words = builder.toString().trim().split(&quot; &quot;).length;</span>
+			}
+<span class="nc" id="L53">		} catch (IOException e) {</span>
+<span class="nc" id="L54">			throw new FileReaderException(&quot;Unable To Read File&quot;, e);</span>
+<span class="fc" id="L55">		}</span>
+
+<span class="fc" id="L57">		return words;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

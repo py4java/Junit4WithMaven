@@ -1,0 +1,8 @@
+com\urbanladder\constants\DatabaseManager.class
+com\fileprocessor\beans\FileProcessorTest.class
+com\primefinder\beans\PrimeFinderTest.class
+com\dataexport\beans\DataExporterTest.class
+com\urbanladder\dao\ProductDaoTest.class
+com\arrayhelper\beans\ArrayHelperTest.class
+com\fileprocessor\beans\FileManagerHelper.class
+com\urbanladder\helper\SchemaManager.class
